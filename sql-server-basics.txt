@@ -1,0 +1,53 @@
+To start sql
+SqlLocalDB.exe start MSSQLLocalDB
+
+To create a database 
+
+CREATE DATABASE railway ON (
+    NAME='railway',
+    FILENAME='E:\src\windows form project\RailwayReservation\railway.mdf')
+
+Insert value 
+
+Imports System.Data
+Imports System.Data.SqlClient
+
+Public Class DBConnectionClass
+    Public Sub Login(uMail As String, uPassword As String)
+
+        Dim conn As String = "Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=" & "E:\src\windows form project\StudentInformation\StudentInformation\studentinfo.mdf" & ";Integrated Security=True;Connect Timeout=30"
+        Dim connection As SqlConnection = New SqlConnection(conn)
+
+        Dim sql As String = "INSERT INTO [users] ([UMailId], [uPassword]) VALUES (@uMail, @uPassword)"
+        Dim cmd As SqlCommand = New SqlCommand(sql, connection)
+        cmd.Parameters.AddWithValue("@uMail", uMail)
+        cmd.Parameters.AddWithValue("@uPassword", uPassword)
+
+        connection.Open()
+        cmd.ExecuteNonQuery()
+        connection.Close()
+    End Sub
+End Class
+
+To select value
+
+Dim sql As String = "SELECT uPassword FROM [users] WHERE uMailId = @uMail"
+        Dim cmd As SqlCommand = New SqlCommand(sql, connection)
+        cmd.Parameters.AddWithValue("@uMail", uMail)
+
+        connection.Open()
+        Dim reader As SqlDataReader = cmd.ExecuteReader
+
+        If reader.Read Then
+            Console.Write(reader("uPassword").ToString)
+            If reader("uPassword").ToString = uPassword Then
+                MainForm.Show()
+            Else
+                LoginForm.Show()
+            End If
+        Else
+            LoginForm.Show()
+        End If
+
+
+        connection.Close()
