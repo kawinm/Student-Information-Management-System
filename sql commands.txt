@@ -1,0 +1,73 @@
+Table users
+
+CREATE TABLE users (
+    userId int IDENTITY(1,1) PRIMARY KEY , 
+    uFirstName varchar(255), 
+    uLastName varchar(255), 
+    uMailId varchar(255), 
+    uPassword varchar(255), 
+    uRole varchar(255) 
+);
+
+Table students
+
+CREATE TABLE students (
+    sId int IDENTITY(1,1) PRIMARY KEY ,
+    sRegNo int UNIQUE, 
+    sFirstName varchar(255), 
+    sLastName varchar(255), 
+    sMailId varchar(255), 
+    sPassword varchar(255), 
+    sDept varchar(255),
+    sSemester int,
+    sDateOfJoin date,
+    sDateOfLeave date,
+    sRemarks text, 
+);
+
+Table course
+
+CREATE TABLE course (
+    cId int IDENTITY(1,1) PRIMARY KEY , 
+    cName varchar(255), 
+    cCode varchar(255), 
+    cRegulation varchar(255), 
+    cType int
+);
+
+Table professor
+
+CREATE TABLE professor (
+    pId int IDENTITY(1,1) PRIMARY KEY , 
+    pRegNo int UNIQUE,
+    pFirstName varchar(255), 
+    pLastName varchar(255), 
+    pMailId varchar(255), 
+    pPassword varchar(255), 
+    pDept varchar(255),
+    pDateOfJoin date,
+    pDateOfLeave date,
+    pRemarks text, 
+);
+
+Table internals
+
+CREATE TABLE internals (
+    iId int IDENTITY(1,1) PRIMARY KEY , 
+    sId int FOREIGN KEY REFERENCES students(sId),
+    cId int FOREIGN KEY REFERENCES course(cId),
+    pId int FOREIGN KEY REFERENCES professor(pId),
+    mark int,
+    semNo int,
+    iNo int
+);
+
+Table marks
+
+CREATE TABLE marks (
+    mId int IDENTITY(1,1) PRIMARY KEY , 
+    sId int FOREIGN KEY REFERENCES students(sId),
+    cId int FOREIGN KEY REFERENCES course(cId),
+    mark int,
+    semNo int,
+);
