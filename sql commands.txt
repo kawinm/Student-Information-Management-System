@@ -14,15 +14,22 @@ Table students
 CREATE TABLE students (
     sId int IDENTITY(1,1) PRIMARY KEY ,
     sRegNo int UNIQUE, 
-    sFirstName varchar(255), 
-    sLastName varchar(255), 
+    sName varchar(255), 
     sMailId varchar(255), 
     sPassword varchar(255), 
     sDept varchar(255),
     sSemester int,
+    hosteller varchar(50),
+    sAddress text,
+    district varchar(255),
+    pincode int,
+    dob date,
+    fatherName varchar(255), 
     sDateOfJoin date,
     sDateOfLeave date,
     sRemarks text, 
+    sFileSize int,
+    sPhoto image,
 );
 
 Table course

@@ -3,7 +3,8 @@ Imports System.Data.SqlClient
 
 Public Class DBConnectionClass
 
-    Dim conn As String = "Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=" & "E:\src\windows form project\StudentInformation\StudentInformation\studentinfo.mdf" & ";Integrated Security=True;Connect Timeout=30"
+    Dim dataDir As String = String.Format("{0}", Environment.CurrentDirectory)
+    Dim conn As String = "Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=" & dataDir & "\studentinfo.mdf" & ";Integrated Security=True;Connect Timeout=30"
     Dim connection As SqlConnection = New SqlConnection(conn)
 
     Public Sub Login(uMail As String, uPassword As String)
@@ -21,9 +22,11 @@ Public Class DBConnectionClass
                 MainForm.Show()
                 LoginForm.Hide()
             Else
+                MsgBox("Incorrect password")
                 LoginForm.Show()
             End If
         Else
+            MsgBox("Incorrect username")
             LoginForm.Show()
         End If
 
@@ -51,21 +54,34 @@ Public Class DBConnectionClass
 
     End Sub
 
-    Public Sub StudentAdd(sFirstName As String, sLastName As String, sDept As String, sSem As Integer, sDoj As String, sRegNo As Integer)
+    Public Sub StudentAdd(sFirstName As String, sFatherName As String, sRegNo As Integer, sDob As String, sEmail As String, sAddress As String, sDistrict As String, sPincode As Integer, sSem As Integer, sDoj As String, sDept As String, sHosteller As String, FileSize As Integer, arrImage As Byte())
 
-        Dim sql As String = "INSERT INTO [students] ([sFirstName], [sLastName], [sDept], [sSemester], [sDateOfJoin], [sRegNo]) VALUES (@sFirstName, @sLastName, @sDept, @sSem, @sDoj, @sRegNo)"
-        Dim cmd As SqlCommand = New SqlCommand(sql, connection)
+        Try
+            Dim sql As String = "INSERT INTO [students] ([sName], [fatherName], [sRegNo], [dob], [sMailId], [sAddress], [district], [pincode], [sSemester], [sDateOfJoin], [sDept], [hosteller], [sFileSize], [sPhoto]) VALUES (@sFirstName, @sFatherName, @sRegNo, @sDob, @sEmail, @sAddress, @sDistrict, @sPincode, @sSem, @sDoj, @sDept, @sHosteller, @FileSize, @arrImage)"
+            Dim cmd As SqlCommand = New SqlCommand(sql, connection)
 
-        cmd.Parameters.AddWithValue("@sFirstName", sFirstName)
-        cmd.Parameters.AddWithValue("@sLastName", sLastName)
-        cmd.Parameters.AddWithValue("@sDept", sDept)
-        cmd.Parameters.AddWithValue("@sSem", sSem)
-        cmd.Parameters.AddWithValue("@sDoj", sDoj)
-        cmd.Parameters.AddWithValue("@sRegNo", sRegNo)
+            cmd.Parameters.AddWithValue("@sFirstName", sFirstName)
+            cmd.Parameters.AddWithValue("@sFatherName", sFatherName)
+            cmd.Parameters.AddWithValue("@sRegNo", sRegNo)
+            cmd.Parameters.AddWithValue("@sDob", sDob)
+            cmd.Parameters.AddWithValue("@sEmail", sEmail)
+            cmd.Parameters.AddWithValue("@sAddress", sAddress)
+            cmd.Parameters.AddWithValue("@sDistrict", sDistrict)
+            cmd.Parameters.AddWithValue("@sPincode", sPincode)
+            cmd.Parameters.AddWithValue("@sSem", sSem)
+            cmd.Parameters.AddWithValue("@sDoj", sDoj)
+            cmd.Parameters.AddWithValue("@sDept", sDept)
+            cmd.Parameters.AddWithValue("@sHosteller", sHosteller)
+            cmd.Parameters.AddWithValue("@FileSize", FileSize)
+            cmd.Parameters.AddWithValue("@arrImage", arrImage)
 
-        connection.Open()
-        cmd.ExecuteNonQuery()
-        connection.Close()
+            connection.Open()
+            cmd.ExecuteNonQuery()
+        Catch ex As Exception
+            MsgBox(ex.Message)
+        Finally
+            connection.Close()
+        End Try
 
     End Sub
 

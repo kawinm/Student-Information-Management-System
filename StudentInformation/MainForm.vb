@@ -5,7 +5,7 @@
     End Sub
 
     Private Sub SDButton_Click(sender As Object, e As EventArgs) Handles SDButton.Click
-        StudentDetailsForm.Show()
+        DataStudentForm.Show()
         Me.Hide()
     End Sub
 
@@ -35,16 +35,23 @@
     End Sub
 
     Private Sub CDButton_Click(sender As Object, e As EventArgs) Handles CDButton.Click
-        CourseDetailsForm.Show()
+        DataCourseForm.Show()
         Me.Hide()
     End Sub
 
     Private Sub PDButton_Click(sender As Object, e As EventArgs) Handles PDButton.Click
-        ProfDetailsForm.Show()
+        DataProfessorForm.Show()
         Me.Hide()
     End Sub
 
-    Private Sub Label1_Click(sender As Object, e As EventArgs)
-
+    Private Sub Button2_Click(sender As Object, e As EventArgs) Handles IDButton.Click
+        DataInternalsForm.Show()
+        Me.Hide()
     End Sub
+
+    Private Sub MDButton_Click(sender As Object, e As EventArgs) Handles MDButton.Click
+        DataMarksForm.Show()
+        Me.Hide()
+    End Sub
+
 End Class

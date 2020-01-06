@@ -14,6 +14,7 @@
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
     <Deterministic>true</Deterministic>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
     <PublishUrl>publish\</PublishUrl>
     <Install>true</Install>
     <InstallFrom>Disk</InstallFrom>
@@ -26,7 +27,6 @@
     <MapFileExtensions>true</MapFileExtensions>
     <ApplicationRevision>0</ApplicationRevision>
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
-    <IsWebBootstrapper>false</IsWebBootstrapper>
     <UseApplicationTrust>false</UseApplicationTrust>
     <BootstrapperEnabled>true</BootstrapperEnabled>
   </PropertyGroup>
@@ -63,6 +63,9 @@
     <OptionInfer>On</OptionInfer>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="itextsharp">
+      <HintPath>C:\Users\Jarvis\Downloads\Compressed\itextsharp\itextsharp.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Deployment" />
@@ -118,23 +121,35 @@
     <Compile Include="AddStudentForm.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="CourseDetailsForm.Designer.vb">
-      <DependentUpon>CourseDetailsForm.vb</DependentUpon>
+    <Compile Include="DataCourseForm.Designer.vb">
+      <DependentUpon>DataCourseForm.vb</DependentUpon>
     </Compile>
-    <Compile Include="CourseDetailsForm.vb">
+    <Compile Include="DataCourseForm.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DataInternalsForm.Designer.vb">
+      <DependentUpon>DataInternalsForm.vb</DependentUpon>
+    </Compile>
+    <Compile Include="DataInternalsForm.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DataMarksForm.Designer.vb">
+      <DependentUpon>DataMarksForm.vb</DependentUpon>
+    </Compile>
+    <Compile Include="DataMarksForm.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DataProfessorForm.Designer.vb">
+      <DependentUpon>DataProfessorForm.vb</DependentUpon>
+    </Compile>
+    <Compile Include="DataProfessorForm.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="DBConnectionClass.vb" />
-    <Compile Include="ProfDetailsForm.Designer.vb">
-      <DependentUpon>ProfDetailsForm.vb</DependentUpon>
+    <Compile Include="DataStudentForm.Designer.vb">
+      <DependentUpon>DataStudentForm.vb</DependentUpon>
     </Compile>
-    <Compile Include="ProfDetailsForm.vb">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="StudentDetailsForm.Designer.vb">
-      <DependentUpon>StudentDetailsForm.vb</DependentUpon>
-    </Compile>
-    <Compile Include="StudentDetailsForm.vb">
+    <Compile Include="DataStudentForm.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="MainForm.Designer.vb">
@@ -171,6 +186,31 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <Compile Include="studentinfoDataSet.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>studentinfoDataSet.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="studentinfoDataSet1.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>studentinfoDataSet1.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="studentinfoDataSet2.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>studentinfoDataSet2.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="studentinfoDataSet3.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>studentinfoDataSet3.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="studentinfoDataSet4.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>studentinfoDataSet4.xsd</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="AddCourseForm.resx">
@@ -188,14 +228,14 @@
     <EmbeddedResource Include="AddStudentForm.resx">
       <DependentUpon>AddStudentForm.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="CourseDetailsForm.resx">
-      <DependentUpon>CourseDetailsForm.vb</DependentUpon>
+    <EmbeddedResource Include="DataCourseForm.resx">
+      <DependentUpon>DataCourseForm.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="ProfDetailsForm.resx">
-      <DependentUpon>ProfDetailsForm.vb</DependentUpon>
+    <EmbeddedResource Include="DataProfessorForm.resx">
+      <DependentUpon>DataProfessorForm.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="StudentDetailsForm.resx">
-      <DependentUpon>StudentDetailsForm.vb</DependentUpon>
+    <EmbeddedResource Include="DataStudentForm.resx">
+      <DependentUpon>DataStudentForm.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="LoginForm.resx">
       <DependentUpon>LoginForm.vb</DependentUpon>
@@ -224,15 +264,61 @@
       <LastGenOutput>Settings.Designer.vb</LastGenOutput>
     </None>
     <None Include="App.config" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="studentinfo.mdf">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="studentinfo_log.ldf">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-      <DependentUpon>studentinfo.mdf</DependentUpon>
-    </Content>
+    <None Include="studentinfoDataSet.xsc">
+      <DependentUpon>studentinfoDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="studentinfoDataSet.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>studentinfoDataSet.Designer.vb</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="studentinfoDataSet.xss">
+      <DependentUpon>studentinfoDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="studentinfoDataSet1.xsc">
+      <DependentUpon>studentinfoDataSet1.xsd</DependentUpon>
+    </None>
+    <None Include="studentinfoDataSet1.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>studentinfoDataSet1.Designer.vb</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="studentinfoDataSet1.xss">
+      <DependentUpon>studentinfoDataSet1.xsd</DependentUpon>
+    </None>
+    <None Include="studentinfoDataSet2.xsc">
+      <DependentUpon>studentinfoDataSet2.xsd</DependentUpon>
+    </None>
+    <None Include="studentinfoDataSet2.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>studentinfoDataSet2.Designer.vb</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="studentinfoDataSet2.xss">
+      <DependentUpon>studentinfoDataSet2.xsd</DependentUpon>
+    </None>
+    <None Include="studentinfoDataSet3.xsc">
+      <DependentUpon>studentinfoDataSet3.xsd</DependentUpon>
+    </None>
+    <None Include="studentinfoDataSet3.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>studentinfoDataSet3.Designer.vb</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="studentinfoDataSet3.xss">
+      <DependentUpon>studentinfoDataSet3.xsd</DependentUpon>
+    </None>
+    <None Include="studentinfoDataSet4.xsc">
+      <DependentUpon>studentinfoDataSet4.xsd</DependentUpon>
+    </None>
+    <None Include="studentinfoDataSet4.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>studentinfoDataSet4.Designer.vb</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="studentinfoDataSet4.xss">
+      <DependentUpon>studentinfoDataSet4.xsd</DependentUpon>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <BootstrapperPackage Include=".NETFramework,Version=v4.7.2">
@@ -245,6 +331,15 @@
       <ProductName>.NET Framework 3.5 SP1</ProductName>
       <Install>false</Install>
     </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="studentinfo.mdf">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="studentinfo_log.ldf">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <DependentUpon>studentinfo.mdf</DependentUpon>
+    </Content>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
 </Project>

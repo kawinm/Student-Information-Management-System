@@ -231,11 +231,11 @@ Partial Class AddProfessorForm
         Me.Label11.AutoSize = True
         Me.Label11.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label11.ForeColor = System.Drawing.Color.FromArgb(CType(CType(220, Byte), Integer), CType(CType(61, Byte), Integer), CType(CType(36, Byte), Integer))
-        Me.Label11.Location = New System.Drawing.Point(468, 251)
+        Me.Label11.Location = New System.Drawing.Point(485, 249)
         Me.Label11.Name = "Label11"
-        Me.Label11.Size = New System.Drawing.Size(87, 18)
+        Me.Label11.Size = New System.Drawing.Size(70, 18)
         Me.Label11.TabIndex = 35
-        Me.Label11.Text = "Register No"
+        Me.Label11.Text = "Faculty Id"
         '
         'Label12
         '
